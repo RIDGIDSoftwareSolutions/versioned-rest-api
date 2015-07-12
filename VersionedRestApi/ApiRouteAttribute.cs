@@ -12,7 +12,7 @@ namespace VersionedRestApi
     public class ApiRouteAttribute : Attribute, IDirectRouteFactory, IHttpRouteInfoProvider
     {
         public int[] AcceptedVersions { get; set; }
-        public int? StartingVersion { get; set; }
+        public int StartingVersion { get; set; }
         public string Name { get; set; }
         public string Template { get; private set; }
         public int Order { get; set; }
@@ -62,7 +62,7 @@ namespace VersionedRestApi
             }
             else
             {
-                if (StartingVersion.HasValue)
+                if (StartingVersion != 0)
                 {
                     throw new InvalidOperationException("Either 'AcceptedVersions' or 'StartingVersion' can be set, but not both.");
                 }
@@ -75,24 +75,24 @@ namespace VersionedRestApi
             return routePrefix + "/" + Template;
         }
 
-        private static int[] GetSupportedVersions(int? startVersion, IConfigurationManager configurationManager)
+        private static int[] GetSupportedVersions(int startVersion, IConfigurationManager configurationManager)
         {
             string currentApiVersionStringValue = configurationManager.AppSettings.AppSetting(APP_KEY_CURRENT_API_VERSION);
 
             int currentApiVersion = ValidateCurrentApiVersionAndStartVersion(startVersion, currentApiVersionStringValue);
 
-            if (!startVersion.HasValue)
+            if (startVersion == 0)
             {
                 startVersion = 1;
             }
 
-            int numberOfVersions = 1 + currentApiVersion - startVersion.Value;
+            int numberOfVersions = 1 + currentApiVersion - startVersion;
 
             var supportedVersions = new int[numberOfVersions];
 
             for (int i = 0; i < numberOfVersions; i++)
             {
-                supportedVersions[i] = startVersion.Value + i;
+                supportedVersions[i] = startVersion + i;
             }
             return supportedVersions;
         }

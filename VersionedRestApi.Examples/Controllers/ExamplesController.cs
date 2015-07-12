@@ -49,15 +49,15 @@ namespace VersionedRestApi.Examples.Controllers
         */
         [ApiRoute("Examples/", AcceptedVersions = new[] {2, 3, 4, 5, 6} )]
         [HttpGet]
-        public string SomeBreakingChangeToGet()
+        public string SomeBreakingChangeToTheGetAction()
         {
             return "This was a breaking change that caused the API to need to be versioned to version 2. This action didn't change again until version 7 (see below).";
         }
 
         /*
-         * This method handles requests to every version  
+         * This method handles requests to version 7 and up (e.g. /v7/Examples/)  
          */
-        [ApiRoute("Examples/")]/** TODO add support for a start version that goes through current version*/
+        [ApiRoute("Examples/", StartingVersion = 7)]
         [HttpGet]
         public string YetAnotherBreakingChangeToGet()
         {
