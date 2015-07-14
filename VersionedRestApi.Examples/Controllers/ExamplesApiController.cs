@@ -9,8 +9,14 @@ using System.Web.Http;
 
 namespace VersionedRestApi.Examples.Controllers
 {
-    public class ExamplesController : ApiController
+    public class ExamplesApiController : ApiController
     {
+        [HttpGet]
+        public string HelloWorld()
+        {
+            return "hello world";
+        }
+
         /* this method handles POST requests to version 1 all the way through the current version of the API (as specified by
          * the currentApiVersion app setting) since no versions are explicitly specified. 
          * For example, if the currentApiVersion == 8, then this action will respond to
@@ -28,7 +34,7 @@ namespace VersionedRestApi.Examples.Controllers
         [HttpPost]
         public string Post()
         {
-            return "This method is consistent for all version of the API";
+            return "Return value for the POST method.";
         }
 
         //this method handles GET requests to "/v1/Examples/"
@@ -36,7 +42,7 @@ namespace VersionedRestApi.Examples.Controllers
         [HttpGet]
         public string Get()
         {
-            return "This was created for version 1 of the API";
+            return "Return value for GET /v1/Examples/";
         }
 
         /*
@@ -51,7 +57,7 @@ namespace VersionedRestApi.Examples.Controllers
         [HttpGet]
         public string SomeBreakingChangeToTheGetAction()
         {
-            return "This was a breaking change that caused the API to need to be versioned to version 2. This action didn't change again until version 7 (see below).";
+            return "Return value for GET /v(2|3|4|5|6)/Examples/";
         }
 
         /*
@@ -61,7 +67,7 @@ namespace VersionedRestApi.Examples.Controllers
         [HttpGet]
         public string YetAnotherBreakingChangeToGet()
         {
-            return "This was a breaking change that caused the API to need to be versioned to version 7.";
+            return "Return value for GET /v(7|8)/Examples/ ; assuming the current version is at 8.";
         }
     }
 }

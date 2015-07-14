@@ -1,0 +1,99 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Versioned REST API Example</title>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+
+</head>
+<body>
+    <div>
+        <div>This page demonstrates calls to the various endpoints in the ExamplesApiController that are using the ApiRoute attribute.</div>
+        <br />
+        <table>
+            <tr>
+                <td width ="300px">Send a GET request to "/v1/Examples":</td>
+                <td width="50px"><input type="button" value="Call REST API" id="button1"/></td>
+                <td width="600px">Returned Value: <span style="color:red" id="returnedValue1"></span></td>
+            </tr>
+            <tr>
+                <td width="300px">Send a GET request to "/v2/Examples":</td>
+                <td width="50px"><input type="button" value="Call REST API" id="button2" /></td>
+                <td width="600px">Returned Value: <span style="color:red" id="returnedValue2"></span></td>
+            </tr>
+            <tr>
+                <td width="300px">Send a GET request to "/v7/Examples":</td>
+                <td width="50px"><input type="button" value="Call REST API" id="button3" /></td>
+                <td width="600px">Returned Value: <span style="color:red" id="returnedValue3"></span></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#button1").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "api/v1/Examples/",
+                    success: function (returnedString) {
+                        $("#returnedValue1").html(returnedString);
+                    },
+                    error: function (err) {
+                        alert("Error " + err.status + ":\r\n" + err.statusText);
+                    },
+                    dataType: "json"
+                });
+            });
+            $("#button2").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "api/v2/Examples/",
+                    success: function (returnedString) {
+                        $("#returnedValue2").html(returnedString);
+                    },
+                    error: function (err) {
+                        alert("Error " + err.status + ":\r\n" + err.statusText);
+                    },
+                    dataType: "json"
+                });
+            })
+            $("#button3").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "api/v7/Examples/",
+                    success: function (returnedString) {
+                        $("#returnedValue3").html(returnedString);
+                    },
+                    error: function (err) {
+                        alert("Error " + err.status + ":\r\n" + err.statusText);
+                    },
+                    dataType: "json"
+                });
+            })
+            //$("#button2").click({ url : "api/v2/Examples/", textPlaceholderSelector : "#returnedValue2" }, clickFunction);
+        });
+
+        //function clickFunction(url, textPlaceholder)
+        //{
+        //    var url = event.data.url;
+        //    var textPlaceholderSelector = event.data.textPlaceholderSelector;
+        //    $.ajax({
+        //        type: "GET",
+        //        url: url,
+        //        success: function (returnedString) {
+        //            $(textPlaceholderSelector).html(returnedString);
+        //        },
+        //        error: function (err) {
+        //            alert("Error " + err.status + ":\r\n" + err.statusText);
+        //        },
+        //        dataType: "json"
+        //    });
+        //}
+    </script>
+</body>
+</html>
