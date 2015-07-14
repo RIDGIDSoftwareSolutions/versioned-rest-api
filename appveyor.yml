@@ -2,18 +2,39 @@ version: 1.0.{build}
 skip_tags: true
 configuration: Release
 platform: Any CPU
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+ 
+# Operating system (build VM template)
+os: Windows Server 2012
+ 
+# scripts that are called at very beginning, before repo cloning
+init:
+  - git config --global core.autocrlf input
+ 
+# clone directory
+clone_folder: c:\projects\versioned-rest-api
+
+matrix:
+  fast_finish: true     # set this flag to immediately finish build once one of the jobs fails.
+
 build:
-  project: VersionedRestApi
+  project: VersionedRestApi.sln
   verbosity: normal
 # scripts to run before build
 before_build:
  - nuget restore
+# scripts to run after build
+after_build:
+ - nunit-console ./VersionedRestApi.Tests/bin/Release/VersionedRestApi.Tests.dll
 notifications:
 - provider: Email
   to:
   - jakejgordon@gmail.com
   subject: AppVeyor Build
-  message: The build status changed for versioned-rest-api.
+  message: versioned-rest-api build failed
   on_build_success: false
-  on_build_failure: false
-  on_build_status_changed: true
+  on_build_failure: true
+  on_build_status_changed: false
