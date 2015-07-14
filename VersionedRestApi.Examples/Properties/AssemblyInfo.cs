@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VersionedRestApi.Examples")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ridge Tool Company")]
+[assembly: AssemblyCompany("jakejgordon")]
 [assembly: AssemblyProduct("VersionedRestApi.Examples")]
-[assembly: AssemblyCopyright("Copyright © Ridge Tool Company 2015")]
+[assembly: AssemblyCopyright("Copyright © jakejgordon 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
