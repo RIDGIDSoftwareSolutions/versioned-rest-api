@@ -8,10 +8,26 @@ using ConfigurationManager = System.Configuration.Abstractions.ConfigurationMana
 
 namespace VersionedRestApi
 {
+    /// <summary>
+    /// This is a System.Attribute meant to be applied to REST actions as a means of specifying the Uri fragment
+    /// of the resource (e.g. "SomeResource/") as well as a prefix for the version based on either the AcceptedVersions
+    /// or StartingVersion being set. 
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
     public class ApiRouteAttribute : Attribute, IDirectRouteFactory, IHttpRouteInfoProvider
     {
+        /// <summary>
+        /// Designates the specific versions of the REST api to which this action should respond. For example, if
+        /// the Acceptedversions are {1,2} then the the action will handle requests to /v1/{Resource} and 
+        /// /v2/{Resource}. Cannot be used in conjunction with the StartingVersion property.
+        /// </summary>
         public int[] AcceptedVersions { get; set; }
+        /// <summary>
+        /// Designates the first version of the API that supports this action. For example, if StartingVersion
+        /// is set to 2 and the currentApiVersion in the config is set to 3, then this means the action will respond
+        /// to requests to /v2/{Resource} and /v3/{Resource}. Cannot be used in conjunction with the AcceptedVersions
+        /// property.
+        /// </summary>
         public int StartingVersion { get; set; }
         public string Name { get; set; }
         public string Template { get; private set; }
@@ -22,6 +38,13 @@ namespace VersionedRestApi
 
         internal const string APP_KEY_CURRENT_API_VERSION = "currentApiVersion";
 
+        /// <summary>
+        /// This constructor is automatically called when using the RouteAttribute annotation.
+        /// </summary>
+        /// <param name="template">The user-specified Uri template to which this action responds. Cannot start
+        /// with a forward slash ('/')</param>
+        /// <exception cref="ArgumentException">Throws an ArgumentException if the template starts with a forward-slash,
+        /// since this is automatically added.</exception>
         public ApiRouteAttribute(string template)
         {
             ValidateTemplateIsNotNullOrBlank(template);
