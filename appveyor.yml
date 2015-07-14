@@ -5,6 +5,9 @@ platform: Any CPU
 build:
   project: VersionedRestApi
   verbosity: normal
+# scripts to run before build
+before_build:
+ - nuget restore
 notifications:
 - provider: Email
   to:
