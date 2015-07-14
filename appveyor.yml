@@ -1,0 +1,16 @@
+version: 1.0.{build}
+skip_tags: true
+configuration: Release
+platform: Any CPU
+build:
+  project: VersionedRestApi
+  verbosity: normal
+notifications:
+- provider: Email
+  to:
+  - jakejgordon@gmail.com
+  subject: AppVeyor Build
+  message: The build status changed for versioned-rest-api.
+  on_build_success: false
+  on_build_failure: false
+  on_build_status_changed: true
