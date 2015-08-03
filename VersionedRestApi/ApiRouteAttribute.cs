@@ -52,8 +52,19 @@ namespace VersionedRestApi
         /// property.
         /// </summary>
         public int StartingVersion { get; set; }
+        /// <summary>
+        /// The name of the route. Can be used to more conveniently generate links to the route. For more details see: http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#route-names
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// A string pattern for the route template. This is constructed during route creation and doesn't need to be set manually. 
+        /// </summary>
         public string Template { get; private set; }
+        /// <summary>
+        /// Represents a priority order for this route. The lower the number, the higher the priority. 
+        /// In other words, when a request matches multiple routes it maps to the route with the lowest Order.
+        /// For more details see: http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#order
+        /// </summary>
         public int Order { get; set; }
         internal string RoutePrefix { get; set; }
 
@@ -79,6 +90,11 @@ namespace VersionedRestApi
             Template = template;
         }
 
+        /// <summary>
+        /// Constructs a RouteEntry from teh given context
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public RouteEntry CreateRoute(DirectRouteFactoryContext context)
         {
             Template = this.BuildRoute();
