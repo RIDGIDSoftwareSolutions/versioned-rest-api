@@ -29,7 +29,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("VersionedRestApi")]
-[assembly: AssemblyDescription("Attributes for versioning WebApi REST endpoints")]
+[assembly: AssemblyDescription(@"VersionedRestApi provides a simple but powerful attribute called 'ApiRoute' that
+	lets you annotate your Web API actions with versions (or version ranges). 
+    Versioning is handled via the URI (as opposed to query string parameter, header, or body parameter). 
+    See GitHub project readme for more details: https://github.com/jakejgordon/versioned-rest-api")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("jakejgordon")]
 [assembly: AssemblyProduct("VersionedRestApi")]
@@ -55,6 +58,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.0.1")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: InternalsVisibleTo("VersionedRestApi.Tests")]
