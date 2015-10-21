@@ -32,11 +32,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription(@"VersionedRestApi provides a simple but powerful attribute called 'ApiRoute' that
 	lets you annotate your Web API actions with versions (or version ranges). 
     Versioning is handled via the URI (as opposed to query string parameter, header, or body parameter). 
-    See GitHub project readme for more details: https://github.com/jakejgordon/versioned-rest-api")]
+    See GitHub project readme for more details: https://github.com/RIDGIDSoftwareSolutions/versioned-rest-api")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("jakejgordon")]
+[assembly: AssemblyCompany("RIDGID Software Solutions")]
 [assembly: AssemblyProduct("VersionedRestApi")]
-[assembly: AssemblyCopyright("Copyright © jakejgordon 2015")]
+[assembly: AssemblyCopyright("Copyright © RIDGID Software Solutions 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
