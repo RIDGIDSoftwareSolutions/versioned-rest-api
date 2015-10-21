@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/sxdr46klnrue5udo/branch/master?svg=true)](https://ci.appveyor.com/project/ridgidsoftwaresolutions/versioned-rest-api/branch/master)
+
 # What is versioned-rest-api?
 versioned-rest-api is a tiny library which provides a single attribute for handling versioning of your Web API via the URI. This is useful if you have a public-facing API and need to maintain versions for backward compatibility.
 
