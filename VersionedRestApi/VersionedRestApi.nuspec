@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>jakejgordon, cracker4o</authors>
+	<owners>$author$</owners>
+    <licenseUrl>https://github.com/RIDGIDSoftwareSolutions/versioned-rest-api/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/RIDGIDSoftwareSolutions/versioned-rest-api/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/RIDGIDSoftwareSolutions/versioned-rest-api/master/nuget/RSS-icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+	<summary>Allows you to version your Web API using the URI via convenient annotations.</summary>
+    <copyright>Copyright © RIDGID Software Solutions 2015</copyright>
+    <tags> restapi versionedapi versionedrestapi versioning versioned-rest-api rest webapi uri url attribute route </tags>
+  </metadata>
+	<files>
+		<file src="\readme.txt" target="readme.txt" />
+	</files>
+</package>
