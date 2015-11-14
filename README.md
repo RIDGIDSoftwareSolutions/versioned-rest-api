@@ -10,6 +10,9 @@ Versioning your API via the URI is actually a very simple and explicit approach 
 When you add a NuGet reference to versioned-rest-api it will add a new appSetting called currentApiVersion, which will start off with a value of "1". This represents the most recent version of your API.
 You can then annotate your Web API actions with the [ApiRoute] attribute to indicate that the action is versioned. See examples below:
 
+# NuGet
+[Check out the NuGet page for this package](https://www.nuget.org/packages/VersionedRestApi/)
+
 # Examples
 This annotation will make the action respond to any versioned request for this resource. Any API action that has never had a breaking change could use this attribute.
 
