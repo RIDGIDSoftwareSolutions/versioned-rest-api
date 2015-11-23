@@ -18,19 +18,24 @@
         <br />
         <table>
             <tr>
-                <td width ="300px">Send a GET request to "/v1/Examples":</td>
+                <td width ="300px">Send a GET request to "/v1/Examples/":</td>
                 <td width="50px"><input type="button" value="Call REST API" id="button1"/></td>
                 <td width="600px">Returned Value: <span style="color:red" id="returnedValue1"></span></td>
             </tr>
             <tr>
-                <td width="300px">Send a GET request to "/v2/Examples":</td>
+                <td width="300px">Send a GET request to "/v2/Examples/":</td>
                 <td width="50px"><input type="button" value="Call REST API" id="button2" /></td>
                 <td width="600px">Returned Value: <span style="color:red" id="returnedValue2"></span></td>
             </tr>
             <tr>
-                <td width="300px">Send a GET request to "/v7/Examples":</td>
+                <td width="300px">Send a GET request to "/v7/Examples/":</td>
                 <td width="50px"><input type="button" value="Call REST API" id="button3" /></td>
                 <td width="600px">Returned Value: <span style="color:red" id="returnedValue3"></span></td>
+            </tr>
+            <tr>
+                <td width="300px">Send a POST request to "/v1/Examples/":</td>
+                <td width="50px"><input type="button" value="Call REST API" id="button4" /></td>
+                <td width="600px">Returned Value: <span style="color:red" id="returnedValue4"></span></td>
             </tr>
         </table>
     </div>
@@ -75,25 +80,20 @@
                     dataType: "json"
                 });
             })
-            //$("#button2").click({ url : "api/v2/Examples/", textPlaceholderSelector : "#returnedValue2" }, clickFunction);
+            $("#button4").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "api/v1/Examples/",
+                    success: function (returnedString) {
+                        $("#returnedValue4").html(returnedString);
+                    },
+                    error: function (err) {
+                        alert("Error " + err.status + ":\r\n" + err.statusText);
+                    },
+                    dataType: "json"
+                });
+            })
         });
-
-        //function clickFunction(url, textPlaceholder)
-        //{
-        //    var url = event.data.url;
-        //    var textPlaceholderSelector = event.data.textPlaceholderSelector;
-        //    $.ajax({
-        //        type: "GET",
-        //        url: url,
-        //        success: function (returnedString) {
-        //            $(textPlaceholderSelector).html(returnedString);
-        //        },
-        //        error: function (err) {
-        //            alert("Error " + err.status + ":\r\n" + err.statusText);
-        //        },
-        //        dataType: "json"
-        //    });
-        //}
     </script>
 </body>
 </html>
