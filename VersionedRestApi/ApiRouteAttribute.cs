@@ -133,7 +133,8 @@ namespace VersionedRestApi
                     throw new InvalidOperationException("The explicitly specified AcceptedVersion values must all be positive integers.");
                 }
             }
-            string routePrefix = "api/v{version:int:regex(" + string.Join("|", AcceptedVersions) + ")}";
+
+            string routePrefix = "api/v{version:int:regex(^(" + string.Join("|", AcceptedVersions) + ")$)}";
             return routePrefix + "/" + Template;
         }
 

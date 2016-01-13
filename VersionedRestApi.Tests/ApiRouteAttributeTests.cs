@@ -88,7 +88,7 @@ namespace VersionedRestApi.Tests
 
             string actualRoute = routeAttribute.BuildRoute();
 
-            Assert.That(actualRoute, Is.EqualTo("api/v{version:int:regex(1|2|3)}/GamingGroups"));
+            Assert.That(actualRoute, Is.EqualTo("api/v{version:int:regex(^(1|2|3)$)}/GamingGroups"));
         }
 
         [Test]
@@ -103,7 +103,7 @@ namespace VersionedRestApi.Tests
 
             string actualRoute = routeAttribute.BuildRoute();
 
-            Assert.That(actualRoute, Is.EqualTo("api/v{version:int:regex(2|3|4)}/GamingGroups"));
+            Assert.That(actualRoute, Is.EqualTo("api/v{version:int:regex(^(2|3|4)$)}/GamingGroups"));
         }
 
         [Test]
@@ -124,7 +124,7 @@ namespace VersionedRestApi.Tests
         [Test]
         public void BuildRouteMakesARouteSupportingAllVersionsFromAStartingVersionToTheCurrentVersion()
         {
-            const string CURRENT_VERSION = "4";
+            const string CURRENT_VERSION = "10";
             var configurationManager = MockCurrentApiVersionAs(CURRENT_VERSION);
             ApiRouteAttribute routeAttribute = new ApiRouteAttribute("GamingGroups")
             {
@@ -134,7 +134,7 @@ namespace VersionedRestApi.Tests
 
             string actualRoute = routeAttribute.BuildRoute();
 
-            Assert.That(actualRoute, Is.EqualTo("api/v{version:int:regex(2|3|4)}/GamingGroups"));
+            Assert.That(actualRoute, Is.EqualTo("api/v{version:int:regex(^(2|3|4|5|6|7|8|9|10)$)}/GamingGroups"));
         }
 
         [Test]
