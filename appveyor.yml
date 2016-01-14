@@ -28,7 +28,8 @@ before_build:
  - nuget restore
 # scripts to run after build
 after_build:
- - nunit-console ./VersionedRestApi.Tests/bin/Release/VersionedRestApi.Tests.dll
+# - nunit-console ./VersionedRestApi.Tests/bin/Release/VersionedRestApi.Tests.dll
+
 notifications:
 - provider: Email
   to:

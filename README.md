@@ -1,4 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/sxdr46klnrue5udo/branch/master?svg=true)](https://ci.appveyor.com/project/ridgidsoftwaresolutions/versioned-rest-api/branch/master)
+[![NuGet version](http://img.shields.io/nuget/v/VersionedRestApi.svg)](https://www.nuget.org/packages/VersionedRestApi/)
+[![Nuget downloads](http://img.shields.io/nuget/dt/VersionedRestApi.svg)](http://www.nuget.org/packages/VersionedRestApi/)
 
 # What is versioned-rest-api?
 versioned-rest-api is a tiny library which provides a single attribute for handling versioning of your Web API via the URI. This is useful if you have a public-facing API and need to maintain versions for backward compatibility.
@@ -32,4 +34,5 @@ Assuming currentApiVersion in the config is set to "3", then the above action wi
   --OR--
   /api/v3/Chickens/
 ```
-For check out [this code for more examples](https://github.com/RIDGIDSoftwareSolutions/versioned-rest-api/blob/master/VersionedRestApi.Examples/Controllers/ExamplesApiController.cs)
+For check out [this code for more examples](https://github.com/RIDGIDSoftwareSolutions/versioned-rest-api/blob/master/VersionedRestApi.Examples/Controllers/ExamplesApiController.cs). 
+You can also fire up the VersionedRestApi.Examples.cs project to see some ajax requests to an example API in action.
