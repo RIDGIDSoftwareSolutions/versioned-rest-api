@@ -29,11 +29,7 @@ before_build:
 # scripts to run after build
 after_build:
 # - nunit-console ./VersionedRestApi.Tests/bin/Release/VersionedRestApi.Tests.dll
- 
- test:
-  categories:
-   except:
-    - Integration
+
 notifications:
 - provider: Email
   to:
