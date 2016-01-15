@@ -63,11 +63,18 @@ namespace VersionedRestApi.Examples.Controllers
         /*
          * This method handles requests to version 7 and up (e.g. /v7/Examples/)  
          */
-        [ApiRoute("Examples/", StartingVersion = 7)]
+        [ApiRoute("Examples/", AcceptedVersions = new[] { 7, 8, 9, 10, 11, 12 })]
         [HttpGet]
         public string YetAnotherBreakingChangeToGet()
         {
-            return "Return value for GET /v(7|8)/Examples/ ; assuming the current version is at 8.";
+            return "Return value for GET /v(7|8|9|10|11|12)/Examples/";
+        }
+
+        [ApiRoute("Examples/", StartingVersion = 13)]
+        [HttpGet]
+        public string LatestBreakingChangeToGet()
+        {
+            return "Return value for GET /v(13|14})/Examples/ ; assuming the current version is at 14.";
         }
     }
 }
